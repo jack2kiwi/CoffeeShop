@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class PointOfSale {
 	private Item[] items; 
 	private Reward[] rewards;
-	private Order order;
+	private Order order = new Order();
 	PointOfSale(String items, String rewards) {
 		loadItems(items);
 		loadRewards(rewards);
@@ -36,7 +36,7 @@ public class PointOfSale {
 	}
 	
 	public void displayTotal(Customer customer) {
-		int total = order.getPrice();
+		int total = order.calculatePrice();
 		System.out.println("Your total is: " + total);
 	}
 	
@@ -62,6 +62,6 @@ public class PointOfSale {
 	}
 	
 	public void removeItem(Item item) {
-		order.remove(item);
+		order.removeItem(item);
 	}
 }
