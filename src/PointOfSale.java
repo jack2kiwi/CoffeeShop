@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class PointOfSale {
 	private Item[] items; 
-	private Reward[] rewards;
+	private RewardsCards[] rewards;
 	private Order order = new Order();
 	PointOfSale(String items, String rewards) {
 		loadItems(items);
@@ -27,10 +27,10 @@ public class PointOfSale {
 		Scanner scanner = new Scanner(new file(rewards));
 		String line = scanner.next();
 		
-		ArrayList<Reward> rewards = new ArrayList<Reward>();
+		ArrayList<RewardsCards> rewards = new ArrayList<RewardsCards>();
 		
 		while (scanner.hasNext()) {
-			rewards.add(new Reward(line));
+			rewards.add(new RewardsCards(line));
 			line = scanner.next();
 		}
 	}
@@ -45,7 +45,7 @@ public class PointOfSale {
 	}
 	
 	public Customer logIntoRewards(int rewardnum) {
-		for (Reward[] reward : rewards) {
+		for (RewardsCards[] reward : rewards) {
 			if(reward.getNum(rewardnum) == customer.id) {
 				return reward.getCustomer;
 			}
